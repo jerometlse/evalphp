@@ -12,7 +12,7 @@ $conf = array (
         'classname' => 'DebugPDO',
         'dsn' => 'mysql:host=localhost;dbname=propel',
         'user' => 'root',
-        'password' => 'ks164gb',
+        'password' => '',
         'settings' => 
         array (
           'charset' => 

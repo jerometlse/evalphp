@@ -7,7 +7,6 @@
     class Repository {
 
         static function getAll() {
-            die('la');
             /**
              * @TODO
              *
@@ -15,8 +14,7 @@
              * à retourner dans la variable $formations (sous forme de tableau via la requête Propel).
              *
              */
-
-            return $formations;
+            return FormationsQuery::create()->find();
         }
 
         static function get($id) {
