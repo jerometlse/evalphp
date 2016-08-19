@@ -31,8 +31,9 @@
              */
 
             $repository = new Repository();
-            $data = $repository->getAll();
+            $formations = $repository->getAll();
 
+            $data = $formations->toArray();     
 
             if (!$data) {
                 $this->app->abort(204, "No content for this request");
