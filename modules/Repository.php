@@ -7,6 +7,7 @@
     class Repository {
 
         static function getAll() {
+            die('la');
             /**
              * @TODO
              *
