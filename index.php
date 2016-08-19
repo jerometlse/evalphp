@@ -29,16 +29,8 @@
      *
      */
 
-    $controller = new Mods\Controller($app);
-    $controller->getAll();
-    die();
-
-    //$app->get('/get', "controller:getAll");
-    $app->get('/get', function($app){
-        $controller = new Mods\Controller($app);
-        return $controller->getAll();
-    });
-
+    $app->get('/get', "controller:getAll");
+    $app->get('/get/{id}', "controller:get")->assert('id', '\d+');
 
     $app->error(function (\Exception $e, $code) {
         switch ($code) {
