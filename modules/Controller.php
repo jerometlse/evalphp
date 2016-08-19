@@ -11,9 +11,11 @@
     class Controller {
 
         private $app = null;
+        private $repository;
 
         public function __construct($app) {
             $this->app = $app;
+            $this->repository = new Repository();
         }
 
         public function homePage() {
@@ -30,8 +32,8 @@
              *
              */
 
-            $repository = new Repository();
-            $formations = $repository->getAll();
+            
+            $formations = $this->repository->getAll();
 
             $data = $formations->toArray();     
 
@@ -49,6 +51,9 @@
              * 2. Renseigner la variable $data avec les données reçus
              *
              */
+            $formation = $this->repository->get($id);
+
+            $data = $formation->toArray();  
 
             if (!$data) {
                 $this->app->abort(204, "No content for this request");
