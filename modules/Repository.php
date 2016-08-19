@@ -26,7 +26,7 @@
              *
              */
 
-            return $formation;
+            return FormationsQuery::create()->findPk($id);
         }
 
     }
