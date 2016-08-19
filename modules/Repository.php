@@ -14,8 +14,7 @@
              * à retourner dans la variable $formations (sous forme de tableau via la requête Propel).
              *
              */
-
-            return $formations;
+            return FormationsQuery::create()->find();
         }
 
         static function get($id) {
@@ -27,7 +26,7 @@
              *
              */
 
-            return $formation;
+            return FormationsQuery::create()->findPk($id);
         }
 
     }

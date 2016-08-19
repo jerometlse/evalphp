@@ -6,13 +6,16 @@
     use Symfony\Component\HttpFoundation\Request;
     use Symfony\Component\HttpFoundation\Response;
     use Symfony\Component\HttpFoundation\JsonResponse;
+    use Mods\Repository;
 
     class Controller {
 
         private $app = null;
+        private $repository;
 
         public function __construct($app) {
             $this->app = $app;
+            $this->repository = new Repository();
         }
 
         public function homePage() {
@@ -20,7 +23,7 @@
             return new JsonResponse($response);
         }
 
-        public function getAll() {
+        public function getAll() {            
             /**
              * @TODO
              *
@@ -28,6 +31,11 @@
              * 2. Renseigner la variable $data avec les données reçus
              *
              */
+
+            
+            $formations = $this->repository->getAll();
+
+            $data = $formations->toArray();     
 
             if (!$data) {
                 $this->app->abort(204, "No content for this request");
@@ -43,6 +51,9 @@
              * 2. Renseigner la variable $data avec les données reçus
              *
              */
+            $formation = $this->repository->get($id);
+
+            $data = $formation->toArray();  
 
             if (!$data) {
                 $this->app->abort(204, "No content for this request");
